@@ -148,11 +148,12 @@ class ReversiSystem:
             return 2
         for event in events:
             if event.type == MOUSEBUTTONDOWN:
-                x, y = self.get_mouse_board_area()
-                if self.get_settable_point(id)[x][y] == 1:
-                    self.set_new_point(id, x, y)
-                    self.pass_count = 0
-                    res = 1
+                if event.button == 1:
+                    x, y = self.get_mouse_board_area()
+                    if self.get_settable_point(id)[x][y] == 1:
+                        self.set_new_point(id, x, y)
+                        self.pass_count = 0
+                        res = 1
         if self.check_end_game() == True:
             res = 3
         return res
